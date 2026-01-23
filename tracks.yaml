@@ -14,14 +14,14 @@ tracks:
       :{release_inc} --os-name fedora
     - git-bloom-generate -y rosrpm --prefix release/:{ros_distro} :{ros_distro} -i
       :{release_inc} --os-name rhel
-    devel_branch: v2-main
+    devel_branch: v2.6.3
     last_release: v2.5.5
     last_version: 2.5.5
     name: orbbec_camera_v2
     patches: null
     release_inc: '2'
     release_repo_url: git@github.com:orbbec/orbbec_camera_v2-release.git
-    release_tag: v2.5.5
+    release_tag: v2.6.3
     ros_distro: humble
     vcs_type: git
     vcs_uri: https://github.com/orbbec/OrbbecSDK_ROS2.git
