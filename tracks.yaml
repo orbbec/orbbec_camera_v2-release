@@ -1,3 +1,4 @@
+release_repo_url: git@github.com:orbbec/orbbec_camera_v2-release.git
 tracks:
   humble:
     actions:
