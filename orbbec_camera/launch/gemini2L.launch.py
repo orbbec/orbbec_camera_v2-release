@@ -76,6 +76,7 @@ def generate_launch_description():
         DeclareLaunchArgument("ir_info_url", default_value=""),
         DeclareLaunchArgument("color_info_url", default_value=""),
         DeclareLaunchArgument("log_level", default_value="none"),
+        DeclareLaunchArgument("log_file_name", default_value=""),
         DeclareLaunchArgument("enable_publish_extrinsic", default_value="false"),
         DeclareLaunchArgument("enable_d2c_viewer", default_value="false"),
         DeclareLaunchArgument('disparity_to_depth_mode', default_value='SW'),
@@ -135,7 +136,7 @@ def generate_launch_description():
                     name="ob_camera_node",
                     namespace=LaunchConfiguration("camera_name"),
                     parameters=parameters,
-                    output="screen",
+                    output="log",
                 )
             ]
         )
@@ -158,7 +159,7 @@ def generate_launch_description():
             composable_node_descriptions=[
                 compose_node,
             ],
-            output="screen",
+            output="log",
         )
         # Launch description
         ld = LaunchDescription(
