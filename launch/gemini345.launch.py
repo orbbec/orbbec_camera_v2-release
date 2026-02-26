@@ -74,11 +74,13 @@ def generate_launch_description():
         DeclareLaunchArgument('usb_port', default_value=''),
         DeclareLaunchArgument('device_num', default_value='1'),
         DeclareLaunchArgument('upgrade_firmware', default_value=''),
+        DeclareLaunchArgument('preset_firmware_path', default_value=''),
         DeclareLaunchArgument('load_config_json_file_path', default_value=''),
         DeclareLaunchArgument('export_config_json_file_path', default_value=''),
         DeclareLaunchArgument('uvc_backend', default_value='libuvc'),#libuvc or v4l2
         DeclareLaunchArgument('point_cloud_qos', default_value='default'),
         DeclareLaunchArgument('enable_point_cloud', default_value='true'),
+        DeclareLaunchArgument('point_cloud_decimation_filter_factor', default_value='1'),
         DeclareLaunchArgument('enable_colored_point_cloud', default_value='false'),
         DeclareLaunchArgument('cloud_frame_id', default_value=''),
         DeclareLaunchArgument('connection_delay', default_value='10'),
@@ -176,6 +178,7 @@ def generate_launch_description():
         DeclareLaunchArgument('enable_temporal_filter', default_value='false'),
         DeclareLaunchArgument('enable_disparity_to_depth', default_value='true'),
         DeclareLaunchArgument('enable_hole_filling_filter', default_value='false'),
+        DeclareLaunchArgument('enable_false_positive_filter', default_value='false'),
         DeclareLaunchArgument('decimation_filter_scale', default_value='-1'),
         DeclareLaunchArgument('sequence_id_filter_id', default_value='-1'),
         DeclareLaunchArgument('threshold_filter_max', default_value='-1'),
@@ -230,7 +233,7 @@ def generate_launch_description():
                     name="ob_camera_node",
                     namespace=LaunchConfiguration("camera_name"),
                     parameters=params,
-                    output="screen",
+                    output="log",
                 )
             ]
         else:
@@ -250,7 +253,7 @@ def generate_launch_description():
                                 parameters=params,
                             ),
                         ],
-                        output="screen",
+                        output="log",
                     )
                 ])
             ]
