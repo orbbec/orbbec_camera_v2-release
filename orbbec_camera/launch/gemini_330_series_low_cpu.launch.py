@@ -81,6 +81,7 @@ def generate_launch_description():
         DeclareLaunchArgument('uvc_backend', default_value='libuvc'),#libuvc or v4l2
         DeclareLaunchArgument('point_cloud_qos', default_value='default'),
         DeclareLaunchArgument('enable_point_cloud', default_value='true'),
+        DeclareLaunchArgument('point_cloud_decimation_filter_factor', default_value='1'),
         DeclareLaunchArgument('enable_colored_point_cloud', default_value='false'),
         DeclareLaunchArgument('cloud_frame_id', default_value=''),
         DeclareLaunchArgument('connection_delay', default_value='10'),
@@ -246,6 +247,7 @@ def generate_launch_description():
         DeclareLaunchArgument('enable_laser', default_value='true'),
         DeclareLaunchArgument('depth_precision', default_value=''),
         DeclareLaunchArgument('device_preset', default_value='Default'),
+        DeclareLaunchArgument('color_preset', default_value='Default'),# color preset: Default, Warm Biased AWB
         DeclareLaunchArgument('retry_on_usb3_detection_failure', default_value='false'),
         DeclareLaunchArgument('laser_energy_level', default_value='-1'),
         DeclareLaunchArgument('enable_sync_host_time', default_value='true'),
@@ -313,7 +315,7 @@ def generate_launch_description():
                     name="ob_camera_node",
                     namespace=LaunchConfiguration("camera_name"),
                     parameters=params,
-                    output="screen",
+                    output="log",
                 )
             ]
         else:
@@ -333,7 +335,7 @@ def generate_launch_description():
                                 parameters=params,
                             ),
                         ],
-                        output="screen",
+                        output="log",
                     )
                 ])
             ]
